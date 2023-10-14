@@ -3,6 +3,11 @@
   щоб гарантувати, що перший елемент завжди буде рядком, а другий числом?
 */
 
-let person = ['Max', 21];
+type Person = [string, number];
+
+let person: Person;
+person = ["Max", 21];
+
+let person1: Person = ["Max", 21];
 
 export {};
