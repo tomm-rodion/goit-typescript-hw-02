@@ -8,16 +8,34 @@ type AllType = {
   name: string;
   position: number;
   color: string;
-  weight: number
-}
+  weight: number;
+};
 
-function compare (top, bottom): AllType {
+type TopType = Pick<AllType, "name" | "color">;
+type BottomType = Pick<AllType, "position" | "weight">;
+
+function compare<T extends TopType, K extends BottomType>(
+  top: T,
+  bottom: K
+): AllType {
   return {
     name: top.name,
     color: top.color,
     position: bottom.position,
     weight: bottom.weight,
-  }
+  };
+}
+
+function compare2<T extends Partial<AllType>, K extends Partial<AllType>>(
+  top: T,
+  bottom: K
+): AllType {
+  return {
+    name: top.name || "",
+    color: top.color || "",
+    position: bottom.position || 0,
+    weight: bottom.weight || 0,
+  };
 }
 
 export {};
