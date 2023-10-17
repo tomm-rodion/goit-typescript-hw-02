@@ -9,8 +9,17 @@ function getPromise<T>(): Promise<Array<T>> {
   });
 }
 
+function getPromise1(): Promise<Array<string | number>> {
+  return new Promise((resolve) => {
+    resolve(["Text", 50]);
+  });
+}
+
 getPromise<string | number>().then((data) => {
   console.log(data);
+});
+getPromise1().then((data) => {
+  console.log("getPromise1:", data);
 });
 
 export {};
